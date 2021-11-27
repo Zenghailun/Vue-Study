@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!-- <script src="https://unpkg.com/vue@next"></script> -->
+		<script src="./js/v2.6.10/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<ul>
+				<h3>明星列表</h3>
+				<li v-for="item in stars">
+					{{item}}
+				</li>
+				<h3>学生列表</h3>
+				<li v-for="item in students">
+					<h4>{{item.studentName}}</h4>
+					<p>学校：{{item.School}}	--------年龄：{{item.age}}</p>			
+				</li>
+				<h3>学生列表(带索引值)</h3>
+				<li v-for="item,key in students">
+					<h4>索引值：{{key + 1}}--学生姓名：{{item.studentName}}</h4>
+					<p>学校：{{item.School}}	--------年龄：{{item.age}}</p>			
+				</li>
+				<h3>循环一个对象</h3>
+				<li v-for="item,key in students[0]">
+					key:{{key}}----value:{{item}}					
+				</li>
+			</ul>
+			<h3>将年龄是偶数的学生渲染出来，先循环再判断，即使v-if写在前面</h3>
+			<ol>
+				<li v-for="item,index in students" v-if="item.age%2==0" :key="index">
+					<h4>索引值:{{index}}----学生姓名:{{item.studentName}}</h4>
+					<p>学校：{{item.School}}	--------年龄：{{item.age}}</p>
+				</li>
+			</ol>
+		</div>
+		<script>
+			var app = new Vue({
+				el:"#app",
+				data:{
+					stars:["大大菲","成成熊","舒淇"],
+					students:[
+						{
+							studentName:"小明",
+							age:16,
+							School:"清华",
+							imgheader:"https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic%2Fec%2Fca%2Fd8%2Feccad87a334d082b8ff200ae01157e44.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1640536150&t=42af99e02c2bd9eca7197047ddcfb9c8"
+						},
+						{
+							studentName:"海伦",
+							age:20,
+							School:"北交"
+						},
+						{
+							studentName:"冯皓迪",
+							age:27,
+							School:"北交"
+						},
+					]
+				}
+			})
+		</script>
+	</body>
+</html>
