@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!-- <script src="https://unpkg.com/vue@next"></script> -->
+		<script src="./js/v2.6.10/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1>{{firstname + lastname}}</h1>
+			<!-- 计算属性 -->
+			<h1>{{fullname}}</h1>
+			<!-- 将字符串反过来 -->
+			<h1>{{word.split("").reverse().join("")}}</h1>
+			<h1>{{reverseword}}</h1>
+		</div>
+		<script>
+			var app = new Vue({
+				el:"#app",
+				data:{
+					firstname:"曾",
+					lastname:"海伦",
+					word:"music",
+				},
+				computed:{
+					fullname:function(){
+						console.log(this)
+						return this.firstname + this.lastname
+					},
+					reverseword:function()
+					{
+						return this.word.split("").reverse().join("")
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!-- <script src="https://unpkg.com/vue@next"></script> -->
+		<script src="./js/v2.6.10/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			#login{
+				background: skyblue;
+			}
+			#register{
+				background: bisque;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h3>{{msg}}</h3>
+			<!-- 一次性插入不再修改 -->
+			<h3 v-once>{{msg}}</h3>
+			<!-- 插入HTML内容 -->
+			<h3>{{htmlTxT}}</h3>
+			<h3 v-html="htmlTxT"></h3>
+			<!-- 绑定动态属性 -->
+			<div :id="idname">//全写:v-bind: id
+				<h1>登录</h1>
+			</div>
+			<!-- 模板语言的表达式 -->
+			<div>
+				{{firstname + lastname}}
+			</div>
+			<!-- 三元运算符 -->
+			<div>
+				{{isVip?"欢迎VIP用户回来":"普通用户"}}
+			</div>
+			<!-- 事件的绑定 -->
+			<button v-on:click="changeBg">改变背景</button>
+			<button @click="changeBg">改变背景</button>
+		</div>
+		<script>
+			var app = new Vue({
+				el:"#app",
+				data:{
+					msg:"Hello world!",
+					htmlTxT:"<span>Hello ZHL</span>",
+					idname:"login",
+					firstname:"zeng",
+					lastname:"hailun",
+					isVip:true,
+				},
+				methods:{
+					changeBg:function()
+					{
+						document.body.style.background = "skyblue"
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
